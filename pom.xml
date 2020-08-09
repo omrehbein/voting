@@ -132,10 +132,10 @@
     </pluginManagement>
 
     <plugins>
+    
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
-
         <executions>
           <execution>
             <goals>
@@ -144,6 +144,42 @@
           </execution>
         </executions>
       </plugin>
+      
+      <plugin>
+	    <groupId>org.apache.maven.plugins</groupId>
+	    <artifactId>maven-dependency-plugin</artifactId>
+	    <executions>
+	        <execution>
+	            <id>copy-dependencies</id>
+	            <phase>prepare-package</phase>
+	            <goals>
+	                <goal>copy-dependencies</goal>
+	            </goals>
+	            <configuration>
+	                <outputDirectory>
+	                    ${project.build.directory}/libs
+	                </outputDirectory>
+	            </configuration>
+	        </execution>
+	    </executions>
+	</plugin>
+     
+	<plugin>
+	    <groupId>org.apache.maven.plugins</groupId>
+	    <artifactId>maven-jar-plugin</artifactId>
+	    <configuration>
+	        <archive>
+	            <manifest>
+	                <addClasspath>true</addClasspath>
+	                <classpathPrefix>libs/</classpathPrefix>
+	                <mainClass>
+	                    br.com.omr.voting.Application
+	                </mainClass>
+	            </manifest>
+	        </archive>
+	    </configuration>
+	</plugin> 
+      
     </plugins>
   </build>
 </project>
