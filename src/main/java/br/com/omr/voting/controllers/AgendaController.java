@@ -14,8 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.google.common.reflect.TypeToken;
 
+import br.com.omr.voting.domain.interfaces.IAccountingService;
 import br.com.omr.voting.domain.interfaces.IAgendaService;
+import br.com.omr.voting.domain.interfaces.IVotingService;
 import br.com.omr.voting.dto.AgendaDto;
+import br.com.omr.voting.dto.VoteDto;
 import br.com.omr.voting.dto.VotingSessionDto;
 import io.swagger.annotations.Api;
 
@@ -25,10 +28,14 @@ import io.swagger.annotations.Api;
 @Api(tags="pauta")
 public class AgendaController {
 
+    private final IVotingService votingService;
+    private final IAccountingService accountingService;
     private final IAgendaService agendaService;
 	private final ModelMapper modelMapper;
 	
-    public AgendaController(IAgendaService agendaService, ModelMapper modelMapper) {
+    public AgendaController(IVotingService votingService, IAgendaService agendaService, IAccountingService accountingService, ModelMapper modelMapper) {
+    	this.votingService = votingService;
+    	this.accountingService = accountingService;
 		this.agendaService = agendaService;
 		this.modelMapper = modelMapper;
 	}
@@ -37,7 +44,6 @@ public class AgendaController {
 	public @ResponseBody AgendaDto createAgenda (@RequestParam String descriccao) {
 		return modelMapper.map(this.agendaService.createAgenda(descriccao), AgendaDto.class); 
 	}
-	
 	
 	@GetMapping(path="/listar")
 	@SuppressWarnings("serial")
@@ -50,9 +56,14 @@ public class AgendaController {
 		return modelMapper.map(this.agendaService.createVotingSession(pautaId, tempoEmMinutos), VotingSessionDto.class); 
 	}
 	
-	@PutMapping(path="{pautaId}/abrirsessaopadrao")
-	public @ResponseBody VotingSessionDto createVotingSession (@PathVariable int pautaId ) {
-		return modelMapper.map(this.agendaService.createVotingSession(pautaId, 1), VotingSessionDto.class); 
+	@GetMapping(path="{pautaId}/resultado")
+	public @ResponseBody VotingSessionDto compute ( @PathVariable int pautaId ) {
+		return modelMapper.map(this.accountingService.compute(pautaId), VotingSessionDto.class); 
+	}
+	
+	@PostMapping(path="{pautaId}/votar")
+	public @ResponseBody VoteDto vote (@PathVariable int pautaId, @RequestParam String cpf, boolean concordar) {
+		return modelMapper.map(this.votingService.vote(pautaId, cpf, concordar), VoteDto.class); 
 	}
 	
 }
