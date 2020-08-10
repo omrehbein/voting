@@ -1,6 +1,8 @@
 package br.com.omr.voting.domain.exceptions;
 
-public class AlreadyExistsVoteForAgendaAndCpfRuntimeException extends RuntimeException {
+import br.com.omr.voting.infrastructure.exceptionhandler.AppValidationRuntimeException;
+
+public class AlreadyExistsVoteForAgendaAndCpfRuntimeException extends AppValidationRuntimeException {
 
 	/**
 	 * 

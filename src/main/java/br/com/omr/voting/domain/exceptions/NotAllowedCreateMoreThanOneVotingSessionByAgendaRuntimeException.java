@@ -1,6 +1,8 @@
 package br.com.omr.voting.domain.exceptions;
 
-public class NotAllowedCreateMoreThanOneVotingSessionByAgendaRuntimeException extends RuntimeException {
+import br.com.omr.voting.infrastructure.exceptionhandler.AppValidationRuntimeException;
+
+public class NotAllowedCreateMoreThanOneVotingSessionByAgendaRuntimeException extends AppValidationRuntimeException {
 
 	/**
 	 * 

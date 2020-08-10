@@ -1,6 +1,8 @@
 package br.com.omr.voting.domain.exceptions;
 
-public class VotingSessionWasNotCreatedForAgendaRuntimeException extends RuntimeException {
+import br.com.omr.voting.infrastructure.exceptionhandler.AppValidationRuntimeException;
+
+public class VotingSessionWasNotCreatedForAgendaRuntimeException extends AppValidationRuntimeException {
 
 	/**
 	 * 
