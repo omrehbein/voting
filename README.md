@@ -28,7 +28,7 @@ java -jar .\target\voting-1.0.0-SNAPSHOT.jar
 
         
 
-## Teste o Projeto
+## Teste online
 
 
 O projeto pode ser testado através do [Swagger](https://www.baeldung.com/swagger-2-documentation-for-spring-rest-api) no endereço [https://votingomr.herokuapp.com/swagger-ui.html](https://votingomr.herokuapp.com/swagger-ui.html) 

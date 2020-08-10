@@ -8,23 +8,29 @@ import org.springframework.stereotype.Service;
 import br.com.omr.voting.domain.interfaces.IVotingService;
 import br.com.omr.voting.infrastructure.entity.Vote;
 import br.com.omr.voting.infrastructure.entity.VotingSession;
+import br.com.omr.voting.infrastructure.log.ILog;
 import br.com.omr.voting.infrastructure.repository.interfaces.IVoteRepository;
 import br.com.omr.voting.infrastructure.repository.interfaces.IVotingSessionRepository;
+
 
 @Service
 public class VotingServiceImp implements IVotingService {
 
 	private final IVotingSessionRepository votingSessionRepository;
 	private final IVoteRepository voteRepository;
+	private final ILog log;
 
-	public VotingServiceImp(IVotingSessionRepository votingSessionRepository, IVoteRepository voteRepository)
+	public VotingServiceImp(IVotingSessionRepository votingSessionRepository, IVoteRepository voteRepository, ILog log)
 	{
 		this.votingSessionRepository = votingSessionRepository;
 		this.voteRepository = voteRepository;
+		this.log = log;
 	}
 	
 	@Override
 	public Vote vote(int agendaId, String cpf, boolean agree) {
+		this.log.info("Call vote agendaId {} cpf {} agree {}", agendaId, cpf, agree );
+		
 		VotingSession votingSession = this.votingSessionRepository.findOneByAgendaId(agendaId);
 		
 		Date now = new Date();
