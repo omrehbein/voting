@@ -8,10 +8,8 @@ import br.com.omr.voting.infrastructure.entity.VotingSession;
 public interface IAgendaService {
 	
 	public Agenda createAgenda(String description);
-
-	public VotingSession createVotingSession(int agendaId);
 	
-	public VotingSession createVotingSession(int agendaId, int timeInMinute);
+	public VotingSession createVotingSession(int agendaId, Integer timeInMinute);
 
 	public List<Agenda> getAgendas();
 }
