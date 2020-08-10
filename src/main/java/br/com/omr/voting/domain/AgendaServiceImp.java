@@ -3,9 +3,13 @@ package br.com.omr.voting.domain;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.springframework.stereotype.Service;
 
+import br.com.omr.voting.domain.exceptions.NotAllowedCreateMoreThanOneVotingSessionByAgendaRuntimeException;
 import br.com.omr.voting.domain.interfaces.IAgendaService;
 import br.com.omr.voting.infrastructure.entity.Agenda;
 import br.com.omr.voting.infrastructure.entity.VotingSession;
@@ -17,6 +21,7 @@ public class AgendaServiceImp implements IAgendaService{
 
 	private final IAgendaRepository agendaRepository;
 	private final IVotingSessionRepository votingSessionRepository;
+	private static final Logger LOGGER = Logger.getLogger( AgendaServiceImp.class.getName() );
 	
 	public AgendaServiceImp(IAgendaRepository agendaRepository, IVotingSessionRepository votingSessionRepository)
 	{
@@ -26,6 +31,8 @@ public class AgendaServiceImp implements IAgendaService{
 	
 	@Override
 	public Agenda createAgenda(String description) {	
+		LOGGER.log(Level.INFO, "Called createAgenda -> params: description {}", new Object[]{ description });
+		
 		Agenda agenda = new Agenda();
 		agenda.setDescription(description);
 		this.agendaRepository.save(agenda);
@@ -34,12 +41,12 @@ public class AgendaServiceImp implements IAgendaService{
 
 	@Override
 	public VotingSession createVotingSession(int agendaId, int timeInMinute) {
+		LOGGER.log(Level.INFO, "Called createVotingSession -> params: agendaId {} timeInMinute {}", new Object[]{ agendaId, timeInMinute });
 		
-		
-		VotingSession votingSession = this.votingSessionRepository.findOneByAgendaId(agendaId);
-		
-		if (votingSession != null){
-			throw new RuntimeException(String.format("Not allowed to create more than 1 VotingSession by Agenda %s", agendaId));
+		Optional<VotingSession> opVotingSession = this.votingSessionRepository.findOneByAgendaId(agendaId);
+				
+		if (opVotingSession.isPresent()) {
+			throw new NotAllowedCreateMoreThanOneVotingSessionByAgendaRuntimeException(agendaId);
 		}
 		
 		Agenda agenda = this.agendaRepository.findById(agendaId).get();
@@ -50,7 +57,7 @@ public class AgendaServiceImp implements IAgendaService{
 		calendar.add(Calendar.MINUTE, timeInMinute);
 		
 		
-		votingSession = new VotingSession();
+		VotingSession votingSession = new VotingSession();
 		votingSession.setAgenda(agenda);
 		votingSession.setStartSession(now);
 		votingSession.setEndSession(calendar.getTime());
@@ -61,6 +68,7 @@ public class AgendaServiceImp implements IAgendaService{
 
 	@Override
 	public List<Agenda> getAgendas() {
+		LOGGER.log(Level.INFO, "Called getAgendas -> params:");
 		return this.agendaRepository.findAll();
 	}
 

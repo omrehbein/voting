@@ -2,9 +2,12 @@ package br.com.omr.voting.domain;
 
 
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.springframework.stereotype.Service;
 
+import br.com.omr.voting.domain.exceptions.VotingSessionWasNotCreatedForAgendaRuntimeException;
 import br.com.omr.voting.domain.interfaces.IAccountingService;
 import br.com.omr.voting.infrastructure.entity.Vote;
 import br.com.omr.voting.infrastructure.entity.VotingSession;
@@ -16,6 +19,7 @@ public class AccountingServiceImp implements IAccountingService {
 
 	private final IVotingSessionRepository votingSessionRepository;
 	private final IVoteRepository voteRepository;
+	private static final Logger LOGGER = Logger.getLogger( AccountingServiceImp.class.getName() );
 	
 	public AccountingServiceImp(IVotingSessionRepository votingSessionRepository, IVoteRepository voteRepository)
 	{
@@ -25,11 +29,10 @@ public class AccountingServiceImp implements IAccountingService {
 	
 	@Override
 	public VotingSession compute(int agendaId) {
-		VotingSession votingSession = this.votingSessionRepository.findOneByAgendaId(agendaId);
+		LOGGER.log(Level.INFO, "Called compute -> params: agendaId {}", new Object[]{ agendaId });
 		
-		if (votingSession == null) {
-			throw new RuntimeException(String.format("VotingSession was not created for agenda %s", agendaId ));
-		}
+		VotingSession votingSession = this.votingSessionRepository.findOneByAgendaId(agendaId)
+		    .orElseThrow(() -> new VotingSessionWasNotCreatedForAgendaRuntimeException(agendaId));
 		
 		List<Vote> votes = this.voteRepository.findAllByVotingSessionId(votingSession.getId());
 		
