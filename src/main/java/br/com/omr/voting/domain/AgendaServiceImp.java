@@ -33,12 +33,8 @@ public class AgendaServiceImp implements IAgendaService{
 	}
 
 	@Override
-	public VotingSession createVotingSession(int agendaId, Integer timeInMinute) {
+	public VotingSession createVotingSession(int agendaId, int timeInMinute) {
 		
-		if (timeInMinute == null)
-		{
-			timeInMinute = 1;
-		}
 		
 		VotingSession votingSession = this.votingSessionRepository.findOneByAgendaId(agendaId);
 		

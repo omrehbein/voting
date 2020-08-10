@@ -9,7 +9,7 @@ public interface IAgendaService {
 	
 	public Agenda createAgenda(String description);
 	
-	public VotingSession createVotingSession(int agendaId, Integer timeInMinute);
+	public VotingSession createVotingSession(int agendaId, int timeInMinute);
 
 	public List<Agenda> getAgendas();
 }

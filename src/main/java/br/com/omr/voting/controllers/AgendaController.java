@@ -52,7 +52,7 @@ public class AgendaController {
 	}
 	
 	@PutMapping(path="{pautaId}/abrirsessao")
-	public @ResponseBody VotingSessionDto createVotingSession (@PathVariable int pautaId, @RequestParam Integer tempoEmMinutos ) {
+	public @ResponseBody VotingSessionDto createVotingSession (@PathVariable int pautaId, @RequestParam int tempoEmMinutos ) {
 		return modelMapper.map(this.agendaService.createVotingSession(pautaId, tempoEmMinutos), VotingSessionDto.class); 
 	}
 	
