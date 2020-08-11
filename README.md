@@ -18,7 +18,7 @@ O projeto consiste em disponibilizar uma WebApi com funções de votação, onde
 - Nos exemplos está configurado para a porta 8000.
 - Na raiz do projeto execute:
 ```bash
-mvn clean install
+mvn clean package
 ```
 - O Maven irá baixar e gerar o executável na pasta target do projeto, basta executar o comando
 ```bash

@@ -28,6 +28,69 @@
 
   <dependencies>
   
+  
+	<!-- TEST based on https://howtodoinjava.com/spring-boot2/testing/rest-controller-unit-test-example/-->
+	<dependency>
+	    <groupId>org.springframework.boot</groupId>
+	    <artifactId>spring-boot-starter-test</artifactId>
+	    <scope>test</scope>
+	 
+	    <!-- exclude junit 4 -->
+	 
+	    <exclusions>
+	        <exclusion>
+	            <groupId>junit</groupId>
+	            <artifactId>junit</artifactId>
+	        </exclusion>
+	    </exclusions>
+	</dependency>
+	 
+	<!-- Junit 5 -->
+	<dependency>
+	    <groupId>org.junit.jupiter</groupId>
+	    <artifactId>junit-jupiter-api</artifactId>
+	    <scope>test</scope>
+	</dependency>
+	<dependency>
+	    <groupId>org.junit.jupiter</groupId>
+	    <artifactId>junit-jupiter-engine</artifactId>
+	    <scope>test</scope>
+	</dependency>
+	<dependency>
+	    <groupId>org.junit.platform</groupId>
+	    <artifactId>junit-platform-launcher</artifactId>
+	    <scope>test</scope>
+	</dependency>
+	 
+	<!-- Mockito extention -->
+	<dependency>
+	    <groupId>org.mockito</groupId>
+	    <artifactId>mockito-junit-jupiter</artifactId>
+	    <scope>test</scope>
+	</dependency>
+	
+	<dependency>
+	    <groupId>org.junit.platform</groupId>
+	    <artifactId>junit-platform-runner</artifactId>
+	    <scope>test</scope>
+	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/io.rest-assured/spring-mock-mvc -->
+	<dependency>
+	    <groupId>io.rest-assured</groupId>
+	    <artifactId>spring-mock-mvc</artifactId>
+	    <version>3.0.0</version>
+	    <scope>test</scope>
+	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/org.sonarsource.scanner.maven/sonar-maven-plugin -->
+	<dependency>
+		<groupId>org.sonarsource.scanner.maven</groupId>
+		<artifactId>sonar-maven-plugin</artifactId>
+		<version>3.2</version>
+	</dependency>
+	<!-- TEST based on https://howtodoinjava.com/spring-boot2/testing/rest-controller-unit-test-example/-->  
+  
   <!--  org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory'org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory'
   		https://stackoverflow.com/questions/40058001/error-creating-bean-with-name-entitymanagerfactory-defined-in-class-path-resou		
   --> 
@@ -88,36 +151,7 @@
       <scope>runtime</scope>
     </dependency>
 
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-test</artifactId>
-      <scope>test</scope>
-    </dependency>
 
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-test</artifactId>
-      <scope>test</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-test-autoconfigure</artifactId>
-      <scope>test</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <scope>test</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>com.hackerrank.applications</groupId>
-      <artifactId>junit-ordered-test-runner</artifactId>
-      <version>1.0.1</version>
-      <scope>test</scope>
-    </dependency>
   </dependencies>
 
   <build>

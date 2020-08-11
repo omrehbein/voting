@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -41,8 +41,8 @@ public class AgendaController {
 	}
     
 	@PostMapping(path="/criar")
-	public @ResponseBody AgendaDto createAgenda (@RequestParam String descriccao) {
-		return modelMapper.map(this.agendaService.createAgenda(descriccao), AgendaDto.class); 
+	public @ResponseBody AgendaDto createAgenda (@RequestParam String descricao) {
+		return modelMapper.map(this.agendaService.createAgenda(descricao), AgendaDto.class); 
 	}
 	
 	@GetMapping(path="/listar")
@@ -51,7 +51,7 @@ public class AgendaController {
 		return modelMapper.map(this.agendaService.getAgendas(), new TypeToken<List<AgendaDto>>() {}.getType());
 	}
 	
-	@PutMapping(path="{pautaId}/abrirsessao")
+	@PatchMapping(path="{pautaId}/abrirsessao")
 	public @ResponseBody VotingSessionDto createVotingSession (@PathVariable int pautaId, @RequestParam(value = "tempoEmMinutos", defaultValue = "1") int tempoEmMinutos ) {
 		return modelMapper.map(this.agendaService.createVotingSession(pautaId, tempoEmMinutos), VotingSessionDto.class); 
 	}
