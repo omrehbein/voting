@@ -2,7 +2,6 @@ package br.com.omr.voting.domain;
 
 import java.util.Date;
 import java.util.Optional;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.springframework.stereotype.Service;
@@ -54,7 +53,7 @@ public class VotingServiceImp implements IVotingService {
 	
 	@Override
 	public Vote vote(int agendaId, String cpf, boolean agree) {
-		LOGGER.log(Level.INFO, "Called vote -> params: agendaId {} cpf {} agree {}", new Object[]{ agendaId, cpf, agree });
+		LOGGER.info("Called vote");
 		
 		VotingSession votingSession = this.votingSessionRepository.findOneByAgendaId(agendaId)
 			    .orElseThrow(() -> new VotingSessionWasNotCreatedForAgendaRuntimeException(agendaId));

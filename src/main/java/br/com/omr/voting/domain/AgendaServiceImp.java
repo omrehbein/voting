@@ -4,7 +4,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.springframework.stereotype.Service;
@@ -31,7 +30,7 @@ public class AgendaServiceImp implements IAgendaService{
 	
 	@Override
 	public Agenda createAgenda(String description) {	
-		LOGGER.log(Level.INFO, "Called createAgenda -> params: description {}", new Object[]{ description });
+		LOGGER.info("Called createAgenda");
 		
 		Agenda agenda = new Agenda();
 		agenda.setDescription(description);
@@ -41,7 +40,7 @@ public class AgendaServiceImp implements IAgendaService{
 
 	@Override
 	public VotingSession createVotingSession(int agendaId, int timeInMinute) {
-		LOGGER.log(Level.INFO, "Called createVotingSession -> params: agendaId {} timeInMinute {}", new Object[]{ agendaId, timeInMinute });
+		LOGGER.info("Called createVotingSession");
 		
 		Optional<VotingSession> opVotingSession = this.votingSessionRepository.findOneByAgendaId(agendaId);
 				
@@ -68,7 +67,7 @@ public class AgendaServiceImp implements IAgendaService{
 
 	@Override
 	public List<Agenda> getAgendas() {
-		LOGGER.log(Level.INFO, "Called getAgendas -> params:");
+		LOGGER.info("Called getAgendas");
 		return this.agendaRepository.findAll();
 	}
 

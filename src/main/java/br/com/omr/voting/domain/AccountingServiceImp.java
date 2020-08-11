@@ -2,7 +2,6 @@ package br.com.omr.voting.domain;
 
 
 import java.util.List;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.springframework.stereotype.Service;
@@ -29,7 +28,7 @@ public class AccountingServiceImp implements IAccountingService {
 	
 	@Override
 	public VotingSession compute(int agendaId) {
-		LOGGER.log(Level.INFO, "Called compute -> params: agendaId {}", new Object[]{ agendaId });
+		LOGGER.info("Called compute");
 		
 		VotingSession votingSession = this.votingSessionRepository.findOneByAgendaId(agendaId)
 		    .orElseThrow(() -> new VotingSessionWasNotCreatedForAgendaRuntimeException(agendaId));
