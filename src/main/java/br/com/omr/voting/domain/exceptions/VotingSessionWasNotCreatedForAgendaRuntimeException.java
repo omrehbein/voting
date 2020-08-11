@@ -4,9 +4,6 @@ import br.com.omr.voting.infrastructure.exceptionhandler.AppValidationRuntimeExc
 
 public class VotingSessionWasNotCreatedForAgendaRuntimeException extends AppValidationRuntimeException {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	
