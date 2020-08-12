@@ -10,7 +10,7 @@ O projeto consiste em disponibilizar uma WebApi com funções de votação, onde
 
 ## Teste online
 
-- O projeto fui disponibilizado online e a API pode ser testado através do [Swagger](https://www.baeldung.com/swagger-2-documentation-for-spring-rest-api) no endereço [https://votingomr.herokuapp.com/swagger-ui.html](https://votingomr.herokuapp.com/swagger-ui.html) 
+- O projeto foi disponibilizado online e a API pode ser testado através do [Swagger](https://www.baeldung.com/swagger-2-documentation-for-spring-rest-api) no endereço [https://votingomr.herokuapp.com/swagger-ui.html](https://votingomr.herokuapp.com/swagger-ui.html) 
 
 ## Instalação Local
 
@@ -24,19 +24,19 @@ O projeto consiste em disponibilizar uma WebApi com funções de votação, onde
 ```bash
 mvn clean package
 ```
-- O Maven irá baixar as bibliotecas necessarias e gerar o executável na pasta target do projeto, basta executar o comando:
+- O Maven irá baixar as bibliotecas necessárias e gerar o executável na pasta target do projeto, basta executar o comando:
 ```bash
 java -jar .\target\voting-1.0.0-SNAPSHOT.jar
 ```
 
-- Testes Unitarios, na raiz do projeto execute:
+- Testes Unitários, na raiz do projeto execute:
 ```bash
 mvn test
 ```
 ## Qualidade de software
 
-- Foi utilizado o framework [JaCoCo](https://www.jacoco.org/jacoco/trunk/doc/maven.html) para verificar a cobertura de codigo fonte nos Testes Unitarios. Ao rodar os testes unitarios sempre será gerado um relatorio em [RaizProjeto]/target/site/jacoco/index.html
+- Foi utilizado o framework [JaCoCo](https://www.jacoco.org/jacoco/trunk/doc/maven.html) para verificar a cobertura de código fonte nos Testes Unitários. Ao rodar os testes unitários sempre será gerado um relatório em [RaizProjeto]/target/site/jacoco/index.html
 ![cobertura de teste unitario](https://github.com/osmar85/voting/blob/master/img/q1.png)
 
-- Foi utilizado o ferramenta [SonarQube](https://www.sonarqube.org/) para identificar bugs e codigos ruins no projeto
+- Foi utilizado a ferramenta [SonarQube](https://www.sonarqube.org/) para identificar bugs e códigos ruins no projeto
 ![SonarQube](https://github.com/osmar85/voting/blob/master/img/q2.png)
