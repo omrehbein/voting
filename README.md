@@ -29,8 +29,9 @@ java -jar .\target\voting-1.0.0-SNAPSHOT.jar
 ```bash
 mvn test
 ```
-## Qualidade de software: Cobertura de codigo fonte nos Testes Unitarios
-![cobertura de teste unitario](img/iq1.png)
+## Qualidade de software
+- Foi utilizado o framework [JaCoCo](https://www.jacoco.org/jacoco/trunk/doc/maven.html) para verificar a cobertura de codigo fonte nos Testes Unitarios. Ao rodar os testes unitarios sempre será gerado um relatorio em [RaizProjeto]/target/site/jacoco/index.html
+![cobertura de teste unitario](https://github.com/osmar85/voting/blob/master/img/q1.png)
 
         
 
