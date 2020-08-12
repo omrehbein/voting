@@ -1,7 +1,5 @@
 package br.com.omr.voting.dto;
 
-
-
 public class AgendaDto {
 	
 	private Integer id;
@@ -23,7 +21,5 @@ public class AgendaDto {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
-
 	
 }

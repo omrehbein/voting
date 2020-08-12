@@ -13,7 +13,7 @@ import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
 @Entity
-public class VotingSession extends EntityBase {
+public class VotingSession {
 
 	public VotingSession() 
 	{
@@ -26,7 +26,6 @@ public class VotingSession extends EntityBase {
 	private Integer id;
 	
 	@OneToOne
-	@NotNull
 	private Agenda agenda;
 
 	@NotNull
@@ -38,12 +37,11 @@ public class VotingSession extends EntityBase {
 	@OneToMany( fetch = FetchType.LAZY, targetEntity = Vote.class)
 	private List<Vote> votes;
 	
-	
-	
 	private long votesComputed;
-	private long agreeVotesComputed;	
-	private long disagreeVotesComputed;	
 	
+	private long agreeVotesComputed;
+	
+	private long disagreeVotesComputed;	
 	
 	public Integer getId() {
 		return id;
@@ -108,7 +106,5 @@ public class VotingSession extends EntityBase {
 	public void setDisagreeVotesComputed(long disagreeVotesComputed) {
 		this.disagreeVotesComputed = disagreeVotesComputed;
 	}
-	
-	
 	
 }

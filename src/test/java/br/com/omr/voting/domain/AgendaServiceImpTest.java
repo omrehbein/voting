@@ -18,6 +18,7 @@ import org.mockito.Mockito;
 
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import br.com.omr.voting.domain.exceptions.AgendaNotFoundRuntimeException;
 import br.com.omr.voting.domain.exceptions.NotAllowedCreateMoreThanOneVotingSessionByAgendaRuntimeException;
 import br.com.omr.voting.infrastructure.entity.Agenda;
 import br.com.omr.voting.infrastructure.entity.VotingSession;
@@ -26,7 +27,7 @@ import br.com.omr.voting.infrastructure.repository.interfaces.IVotingSessionRepo
 
 @ExtendWith(MockitoExtension.class)
 @RunWith(JUnitPlatform.class)
-public class AgendaServiceImpTest {
+class AgendaServiceImpTest {
 
 	private AgendaServiceImp agendaServiceImp;
 	
@@ -42,7 +43,7 @@ public class AgendaServiceImpTest {
 	}
 	
 	@Test
-    public void createAgenda_InsertNewAgendaByNameTest() 
+    void createAgenda_InsertNewAgendaByNameTest() 
     {
 		//Arrange
 		String agendaDescription = "Will we dream together?";
@@ -55,8 +56,10 @@ public class AgendaServiceImpTest {
 		verify(this.agendaRepository, Mockito.times(1)).save(agendaReturned);
     }
 	
+	
+	
 	@Test
-    public void createVotingSession_InsertNewVotingSessionWhenDoesNotExits() 
+    void createVotingSession_InsertNewVotingSessionWhenDoesNotExits() 
     {
 		//Arrange
 		int agendaId = 1; 
@@ -88,7 +91,7 @@ public class AgendaServiceImpTest {
     }
 	
 	@Test
-    public void createVotingSession_InsertNewVotingSessionWhenAlreadyExits() 
+    void createVotingSession_InsertNewVotingSessionWhenAlreadyExits() 
     {
 		//Arrange
 		int agendaId = 1; 
@@ -113,15 +116,41 @@ public class AgendaServiceImpTest {
         } catch (Exception e) {
 			ex = e;
 		}
-        assertTrue(ex instanceof NotAllowedCreateMoreThanOneVotingSessionByAgendaRuntimeException);
-		
+        
 		//Assert
+        assertTrue(ex instanceof NotAllowedCreateMoreThanOneVotingSessionByAgendaRuntimeException);
 		verify(this.agendaRepository, Mockito.times(0)).findById(agendaId);
     }
 	
+	@Test
+    void createVotingSession_InsertNewVotingSessionWhenAgendaNotFound() 
+    {
+		//Arrange
+		int agendaId = 1; 
+		int timeInMinute = 60;
+		
+		Agenda agenda = null;
+		
+		VotingSession votingSession = null;
+		Optional<VotingSession> opVotingSession = Optional.ofNullable(votingSession);
+		
+		when(this.votingSessionRepository.findOneByAgendaId(agendaId)).thenReturn(opVotingSession);
+		when(this.agendaRepository.findById(agendaId)).thenReturn(Optional.ofNullable(agenda));
+		
+		//Act
+		Exception ex = null;
+        try {
+        	this.agendaServiceImp.createVotingSession(agendaId, timeInMinute);
+        } catch (Exception e) {
+			ex = e;
+		}
+        
+		//Assert
+        assertTrue(ex instanceof AgendaNotFoundRuntimeException);
+    }
 	
 	@Test
-    public void getAgendas() 
+    void getAgendas() 
     {
 		//Arrange
 		

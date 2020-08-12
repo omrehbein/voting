@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Vote extends EntityBase {
+public class Vote {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -20,9 +20,6 @@ public class Vote extends EntityBase {
 	@ManyToOne
 	private VotingSession votingSession;
 
-	
-	
-	
 	public Integer getId() {
 		return id;
 	}
@@ -30,10 +27,6 @@ public class Vote extends EntityBase {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
-
-
-
 
 	public String getCpf() {
 		return cpf;
@@ -58,8 +51,5 @@ public class Vote extends EntityBase {
 	public void setVotingSession(VotingSession votingSession) {
 		this.votingSession = votingSession;
 	}
-	
-	
-	
 	
 }

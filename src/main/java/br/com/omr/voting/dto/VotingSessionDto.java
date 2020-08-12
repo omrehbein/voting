@@ -2,31 +2,26 @@ package br.com.omr.voting.dto;
 
 import java.util.Date;
 
-
 public class VotingSessionDto {
 
 	private Integer id;
 	
-
 	private AgendaDto agenda;
-
 
 	private Date startSession;	
 
 	private Date endSession;
 	
 	private long votesComputed;
+	
 	private long agreeVotesComputed;	
+	
 	private long disagreeVotesComputed;	
-	
-	
-	
-	
 	
 	public Integer getId() {
 		return id;
 	}
-
+	
 	public void setId(Integer id) {
 		this.id = id;
 	}
@@ -78,6 +73,5 @@ public class VotingSessionDto {
 	public void setDisagreeVotesComputed(long disagreeVotesComputed) {
 		this.disagreeVotesComputed = disagreeVotesComputed;
 	}
-
-
+	
 }

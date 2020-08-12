@@ -29,7 +29,7 @@ public class VotingServiceImp implements IVotingService {
 	}
 	
 	
-	private void validateVotingSessionInterval(int agendaId, VotingSession votingSession) 
+	private void validateVotingSessionInterval(VotingSession votingSession) 
 	{
 		Date now = new Date();
 		if (
@@ -58,7 +58,7 @@ public class VotingServiceImp implements IVotingService {
 		VotingSession votingSession = this.votingSessionRepository.findOneByAgendaId(agendaId)
 			    .orElseThrow(() -> new VotingSessionWasNotCreatedForAgendaRuntimeException(agendaId));
 		
-		this.validateVotingSessionInterval(agendaId, votingSession);
+		this.validateVotingSessionInterval(votingSession);
 		this.validateVotingSessionSameCpf(agendaId, votingSession, cpf); 
 
 		Vote vote = new Vote();

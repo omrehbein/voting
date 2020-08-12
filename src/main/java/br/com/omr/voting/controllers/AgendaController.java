@@ -47,7 +47,7 @@ public class AgendaController {
 	
 	@GetMapping(path="/listar")
 	@SuppressWarnings("serial")
-	public @ResponseBody List<AgendaDto> getAgendas () {
+	public @ResponseBody List<AgendaDto> getAgendas() {
 		return modelMapper.map(this.agendaService.getAgendas(), new TypeToken<List<AgendaDto>>() {}.getType());
 	}
 	

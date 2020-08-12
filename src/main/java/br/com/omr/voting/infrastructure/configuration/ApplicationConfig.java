@@ -13,13 +13,11 @@ public class ApplicationConfig {
 
    @Bean
    public ModelMapper modelMapper() {
-      ModelMapper modelMapper = new ModelMapper();
-      return modelMapper;
+      return new ModelMapper();
    }
    
    @Bean
    public PlatformTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
-
      JpaTransactionManager txManager = new JpaTransactionManager();
      txManager.setEntityManagerFactory(entityManagerFactory);
      return txManager;

@@ -27,7 +27,7 @@ import br.com.omr.voting.infrastructure.repository.interfaces.IVotingSessionRepo
 
 @ExtendWith(MockitoExtension.class)
 @RunWith(JUnitPlatform.class)
-public class AccountingServiceImpTest {
+class AccountingServiceImpTest {
 
 	private AccountingServiceImp accountingServiceImp;
 	
@@ -43,7 +43,7 @@ public class AccountingServiceImpTest {
 	}
 	
 	@Test
-    public void compute_CoutAndValidateVotesTest() 
+    void compute_CoutAndValidateVotesTest() 
     {
 		//Arrange
 		int agendaId = 1;
@@ -93,7 +93,7 @@ public class AccountingServiceImpTest {
     }
 	
 	@Test
-    public void compute_AgendSessionDoesNotExitsFail() 
+    void compute_AgendSessionDoesNotExitsFail() 
     {
 		//Arrange
 		int agendaId = 1;

@@ -15,8 +15,6 @@ public class VoteDto {
 		this.id = id;
 	}
 
-
-
 	public String getCpf() {
 		return cpf;
 	}
@@ -32,6 +30,4 @@ public class VoteDto {
 	public void setAgree(boolean agree) {
 		this.agree = agree;
 	}
-	
-	
 }

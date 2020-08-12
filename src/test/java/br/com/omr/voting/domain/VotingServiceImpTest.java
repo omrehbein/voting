@@ -29,7 +29,7 @@ import br.com.omr.voting.infrastructure.repository.interfaces.IVotingSessionRepo
 
 @ExtendWith(MockitoExtension.class)
 @RunWith(JUnitPlatform.class)
-public class VotingServiceImpTest {
+class VotingServiceImpTest {
 	
 	private VotingServiceImp votingServiceImp;
 	
@@ -45,7 +45,7 @@ public class VotingServiceImpTest {
 	}
 	
 	@Test
-    public void vote_ExecuteSucessAgreeVote() 
+    void vote_ExecuteSucessAgreeVote() 
     {
 		//Arrange
 		int agendaId = 1;
@@ -88,7 +88,7 @@ public class VotingServiceImpTest {
     }
 	
 	@Test
-    public void vote_VotingSessionWasNotCreatedForAgenda() 
+    void vote_VotingSessionWasNotCreatedForAgenda() 
     {
 		//Arrange
 		int agendaId = 1;
@@ -114,7 +114,7 @@ public class VotingServiceImpTest {
     }
 	
 	@Test
-    public void vote_AgendasVotingSessionIsOutOfIntervalRange() 
+    void vote_AgendasVotingSessionIsOutOfIntervalRange() 
     {
 		//Arrange
 		int agendaId = 1;
@@ -152,7 +152,7 @@ public class VotingServiceImpTest {
     }
 	
 	@Test
-    public void vote_AlreadyExistsVoteForAgendaAndCpf() 
+    void vote_AlreadyExistsVoteForAgendaAndCpf() 
     {
 		//Arrange
 		int agendaId = 1;

@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 
 import org.springframework.stereotype.Service;
 
+import br.com.omr.voting.domain.exceptions.AgendaNotFoundRuntimeException;
 import br.com.omr.voting.domain.exceptions.NotAllowedCreateMoreThanOneVotingSessionByAgendaRuntimeException;
 import br.com.omr.voting.domain.interfaces.IAgendaService;
 import br.com.omr.voting.infrastructure.entity.Agenda;
@@ -48,7 +49,7 @@ public class AgendaServiceImp implements IAgendaService{
 			throw new NotAllowedCreateMoreThanOneVotingSessionByAgendaRuntimeException(agendaId);
 		}
 		
-		Agenda agenda = this.agendaRepository.findById(agendaId).get();
+		Agenda agenda = this.agendaRepository.findById(agendaId).orElseThrow(() -> new AgendaNotFoundRuntimeException(agendaId));
 		
 		Date now = new Date();
 		Calendar calendar = Calendar.getInstance();
@@ -70,7 +71,5 @@ public class AgendaServiceImp implements IAgendaService{
 		LOGGER.info("Called getAgendas");
 		return this.agendaRepository.findAll();
 	}
-
-
 
 }

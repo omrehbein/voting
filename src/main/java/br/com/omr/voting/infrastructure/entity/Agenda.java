@@ -6,10 +6,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
-/*
- * the pauta entity */
 @Entity
-public class Agenda extends EntityBase {
+public class Agenda {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -17,7 +15,6 @@ public class Agenda extends EntityBase {
 	
 	@NotNull
 	private String description;
-	
 	
 	public Integer getId() {
 		return id;
