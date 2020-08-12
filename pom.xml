@@ -83,13 +83,11 @@
 	    <scope>test</scope>
 	</dependency>
 	
-	<!-- https://mvnrepository.com/artifact/org.sonarsource.scanner.maven/sonar-maven-plugin -->
-	<dependency>
-		<groupId>org.sonarsource.scanner.maven</groupId>
-		<artifactId>sonar-maven-plugin</artifactId>
-		<version>3.2</version>
-	</dependency>
+	
+	
 	<!-- TEST based on https://howtodoinjava.com/spring-boot2/testing/rest-controller-unit-test-example/-->  
+  
+  
   
   <!--  org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory'org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory'
   		https://stackoverflow.com/questions/40058001/error-creating-bean-with-name-entitymanagerfactory-defined-in-class-path-resou		
@@ -167,52 +165,73 @@
 
     <plugins>
     
-      <plugin>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-maven-plugin</artifactId>
-        <executions>
-          <execution>
-            <goals>
-              <goal>repackage</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      
-      <plugin>
-	    <groupId>org.apache.maven.plugins</groupId>
-	    <artifactId>maven-dependency-plugin</artifactId>
-	    <executions>
-	        <execution>
-	            <id>copy-dependencies</id>
-	            <phase>prepare-package</phase>
+	      <plugin>
+	        <groupId>org.springframework.boot</groupId>
+	        <artifactId>spring-boot-maven-plugin</artifactId>
+	        <executions>
+	          <execution>
 	            <goals>
-	                <goal>copy-dependencies</goal>
+	              <goal>repackage</goal>
 	            </goals>
-	            <configuration>
-	                <outputDirectory>
-	                    ${project.build.directory}/libs
-	                </outputDirectory>
-	            </configuration>
-	        </execution>
-	    </executions>
-	</plugin>
-     
-	<plugin>
-	    <groupId>org.apache.maven.plugins</groupId>
-	    <artifactId>maven-jar-plugin</artifactId>
-	    <configuration>
-	        <archive>
-	            <manifest>
-	                <addClasspath>true</addClasspath>
-	                <classpathPrefix>libs/</classpathPrefix>
-	                <mainClass>
-	                    br.com.omr.voting.Application
-	                </mainClass>
-	            </manifest>
-	        </archive>
-	    </configuration>
-	</plugin> 
+	          </execution>
+	        </executions>
+	      </plugin>
+	      
+	      <plugin>
+		    <groupId>org.apache.maven.plugins</groupId>
+		    <artifactId>maven-dependency-plugin</artifactId>
+		    <executions>
+		        <execution>
+		            <id>copy-dependencies</id>
+		            <phase>prepare-package</phase>
+		            <goals>
+		                <goal>copy-dependencies</goal>
+		            </goals>
+		            <configuration>
+		                <outputDirectory>
+		                    ${project.build.directory}/libs
+		                </outputDirectory>
+		            </configuration>
+		        </execution>
+		    </executions>
+		</plugin>
+	     
+		<plugin>
+		    <groupId>org.apache.maven.plugins</groupId>
+		    <artifactId>maven-jar-plugin</artifactId>
+		    <configuration>
+		        <archive>
+		            <manifest>
+		                <addClasspath>true</addClasspath>
+		                <classpathPrefix>libs/</classpathPrefix>
+		                <mainClass>
+		                    br.com.omr.voting.Application
+		                </mainClass>
+		            </manifest>
+		        </archive>
+		    </configuration>
+		</plugin> 
+
+		<plugin>
+			<groupId>org.jacoco</groupId>
+			<artifactId>jacoco-maven-plugin</artifactId>
+			<version>0.8.2</version>
+			<executions>
+				<execution>
+					<goals>
+						<goal>prepare-agent</goal>
+					</goals>
+				</execution>
+				<!-- attached to Maven test phase -->
+				<execution>
+					<id>report</id>
+					<phase>test</phase>
+					<goals>
+						<goal>report</goal>
+					</goals>
+				</execution>
+			</executions>
+		</plugin>
       
     </plugins>
   </build>

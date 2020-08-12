@@ -3,11 +3,11 @@ package br.com.omr.voting.domain;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.verify;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.commons.lang.Validate;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -113,7 +113,7 @@ public class AgendaServiceImpTest {
         } catch (Exception e) {
 			ex = e;
 		}
-        Validate.isTrue(ex instanceof NotAllowedCreateMoreThanOneVotingSessionByAgendaRuntimeException);
+        assertTrue(ex instanceof NotAllowedCreateMoreThanOneVotingSessionByAgendaRuntimeException);
 		
 		//Assert
 		verify(this.agendaRepository, Mockito.times(0)).findById(agendaId);

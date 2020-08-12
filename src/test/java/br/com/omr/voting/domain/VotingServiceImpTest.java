@@ -3,12 +3,12 @@ package br.com.omr.voting.domain;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Optional;
 
-import org.apache.commons.lang.Validate;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -110,7 +110,7 @@ public class VotingServiceImpTest {
 		}
         
 		//Assert
-        Validate.isTrue(ex instanceof VotingSessionWasNotCreatedForAgendaRuntimeException); 
+        assertTrue(ex instanceof VotingSessionWasNotCreatedForAgendaRuntimeException); 
     }
 	
 	@Test
@@ -147,7 +147,7 @@ public class VotingServiceImpTest {
 		}
         
 		//Assert
-        Validate.isTrue(ex instanceof AgendasVotingSessionIsOutOfIntervalRangeRuntimeException);
+        assertTrue(ex instanceof AgendasVotingSessionIsOutOfIntervalRangeRuntimeException);
 		
     }
 	
@@ -193,7 +193,7 @@ public class VotingServiceImpTest {
 		}
         
 		//Assert
-        Validate.isTrue(ex instanceof AlreadyExistsVoteForAgendaAndCpfRuntimeException);
+        assertTrue(ex instanceof AlreadyExistsVoteForAgendaAndCpfRuntimeException);
 		
     }
 }
