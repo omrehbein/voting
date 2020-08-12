@@ -24,7 +24,7 @@ O projeto consiste em disponibilizar uma WebApi com funções de votação, onde
 ```bash
 mvn clean package
 ```
-- O Maven irá baixar e gerar o executável na pasta target do projeto, basta executar o comando:
+- O Maven irá baixar as bibliotecas necessarias e gerar o executável na pasta target do projeto, basta executar o comando:
 ```bash
 java -jar .\target\voting-1.0.0-SNAPSHOT.jar
 ```
