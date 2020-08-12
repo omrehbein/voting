@@ -20,16 +20,17 @@ O projeto consiste em disponibilizar uma WebApi com funções de votação, onde
 ```bash
 mvn clean package
 ```
-- O Maven irá baixar e gerar o executável na pasta target do projeto, basta executar o comando
+- O Maven irá baixar e gerar o executável na pasta target do projeto, basta executar o comando:
 ```bash
 java -jar .\target\voting-1.0.0-SNAPSHOT.jar
 ```
 
-- Rodar Testes Unitarios
+- Testes Unitarios, na raiz do projeto execute:
 ```bash
 mvn test
 ```
-
+## Qualidade de software: Cobertura de codigo fonte nos Testes Unitarios
+![cobertura de teste unitario](img/iq1.png)
 
         
 
