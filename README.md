@@ -30,7 +30,7 @@ java -jar .\target\voting-1.0.0-SNAPSHOT.jar
 mvn test
 ```
 ## Qualidade de software: Cobertura de codigo fonte nos Testes Unitarios
-![cobertura de teste unitario](img/iq1.png)
+![cobertura de teste unitario](https://github.com/osmar85/voting/blob/master/img/q1.png)
 
         
 
