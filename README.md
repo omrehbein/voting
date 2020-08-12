@@ -39,4 +39,4 @@ Foi utilizado o ferramenta [SonarQube](https://www.sonarqube.org/) para identifi
 
 ## Teste a aplicação online
 
-O projeto pode ser testado através do [Swagger](https://www.baeldung.com/swagger-2-documentation-for-spring-rest-api) no endereço [https://votingomr.herokuapp.com/swagger-ui.html](https://votingomr.herokuapp.com/swagger-ui.html) 
+- O projeto pode ser testado através do [Swagger](https://www.baeldung.com/swagger-2-documentation-for-spring-rest-api) no endereço [https://votingomr.herokuapp.com/swagger-ui.html](https://votingomr.herokuapp.com/swagger-ui.html) 
