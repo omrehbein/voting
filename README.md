@@ -8,6 +8,10 @@ O projeto consiste em disponibilizar uma WebApi com funções de votação, onde
     - Receber votos nas pautas com sessões abertas
     - Contabilizar os votos e dar o resultado da votação da pauta
 
+## Teste online
+
+- O projeto fui disponibilizado online e a API pode ser testado através do [Swagger](https://www.baeldung.com/swagger-2-documentation-for-spring-rest-api) no endereço [https://votingomr.herokuapp.com/swagger-ui.html](https://votingomr.herokuapp.com/swagger-ui.html) 
+
 ## Instalação Local
 
 - Necessário ter instalado e configurado o [Apache Maven](https://maven.apache.org/);
@@ -36,7 +40,3 @@ mvn test
 
 - Foi utilizado o ferramenta [SonarQube](https://www.sonarqube.org/) para identificar bugs e codigos ruins no projeto
 ![SonarQube](https://github.com/osmar85/voting/blob/master/img/q2.png)
-
-## Teste a aplicação online
-
-- O projeto pode ser testado através do [Swagger](https://www.baeldung.com/swagger-2-documentation-for-spring-rest-api) no endereço [https://votingomr.herokuapp.com/swagger-ui.html](https://votingomr.herokuapp.com/swagger-ui.html) 
