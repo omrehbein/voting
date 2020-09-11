@@ -25,7 +25,7 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
     	
     	HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR;
     	if(errorReturn.isAppValidationError()) {
-    		status = HttpStatus.BAD_REQUEST;   		
+    		status = ((AppValidationRuntimeException)ex).getHttpStatusResponse();   		
     	} 
     	
     	return handleExceptionInternal(ex, errorReturn, new HttpHeaders(), status, request);

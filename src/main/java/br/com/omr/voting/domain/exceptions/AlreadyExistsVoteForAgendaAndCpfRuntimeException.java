@@ -1,5 +1,7 @@
 package br.com.omr.voting.domain.exceptions;
 
+import org.springframework.http.HttpStatus;
+
 import br.com.omr.voting.infrastructure.exceptionhandler.AppValidationRuntimeException;
 
 public class AlreadyExistsVoteForAgendaAndCpfRuntimeException extends AppValidationRuntimeException {
@@ -9,6 +11,6 @@ public class AlreadyExistsVoteForAgendaAndCpfRuntimeException extends AppValidat
 	
 	public AlreadyExistsVoteForAgendaAndCpfRuntimeException(int agendaId, String cpf)
 	{
-		super(String.format("Already exists a vote for Agenda %s and Cpf %s", agendaId, cpf ));
+		super(String.format("Already exists a vote for Agenda %s and Cpf %s", agendaId, cpf ), HttpStatus.NOT_FOUND);
 	}
 }

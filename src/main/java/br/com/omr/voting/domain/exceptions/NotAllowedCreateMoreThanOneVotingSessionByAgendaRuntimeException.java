@@ -1,5 +1,7 @@
 package br.com.omr.voting.domain.exceptions;
 
+import org.springframework.http.HttpStatus;
+
 import br.com.omr.voting.infrastructure.exceptionhandler.AppValidationRuntimeException;
 
 public class NotAllowedCreateMoreThanOneVotingSessionByAgendaRuntimeException extends AppValidationRuntimeException {
@@ -9,6 +11,6 @@ public class NotAllowedCreateMoreThanOneVotingSessionByAgendaRuntimeException ex
 	
 	public NotAllowedCreateMoreThanOneVotingSessionByAgendaRuntimeException(int agendaId)
 	{
-		super(String.format("Not allowed to create more than 1 VotingSession by Agenda %s", agendaId));
+		super(String.format("Not allowed to create more than 1 VotingSession by Agenda %s", agendaId), HttpStatus.NOT_FOUND);
 	}
 }

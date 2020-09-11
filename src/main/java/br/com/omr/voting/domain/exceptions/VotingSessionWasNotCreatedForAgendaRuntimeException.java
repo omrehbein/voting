@@ -1,5 +1,7 @@
 package br.com.omr.voting.domain.exceptions;
 
+import org.springframework.http.HttpStatus;
+
 import br.com.omr.voting.infrastructure.exceptionhandler.AppValidationRuntimeException;
 
 public class VotingSessionWasNotCreatedForAgendaRuntimeException extends AppValidationRuntimeException {
@@ -9,6 +11,6 @@ public class VotingSessionWasNotCreatedForAgendaRuntimeException extends AppVali
 	
 	public VotingSessionWasNotCreatedForAgendaRuntimeException(int agendaId)
 	{
-		super(String.format("VotingSession was not created for agenda %s", agendaId ));
+		super(String.format("VotingSession was not created for agenda %s", agendaId ), HttpStatus.NOT_FOUND);
 	}
 }
