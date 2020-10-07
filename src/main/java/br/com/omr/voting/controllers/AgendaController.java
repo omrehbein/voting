@@ -24,8 +24,8 @@ import io.swagger.annotations.Api;
 
 
 @RestController
-@RequestMapping(path="/api/v1/pauta")
-@Api(tags="pauta")
+@RequestMapping(path="/api/v1/pautas")
+@Api(tags="pautas")
 public class AgendaController {
 
     private final IVotingService votingService;
